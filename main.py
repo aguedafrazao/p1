@@ -34,6 +34,7 @@ def login():
     print ("-" * 15)
     matricula = input ("INFORME SEU NÚMERO DE MATRÍCULA: ")
     chave = buscar_aluno_por_matricula(matricula)
+
     if chave == -1:
         print ("MATRICULA NÃO ENCONTRADA")
         return
