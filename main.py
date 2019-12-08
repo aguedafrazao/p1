@@ -16,9 +16,38 @@ def criar_codigo_estudante():
     random_numeros = random.randint(0, 99999)
     return "{}{}".format(ano_atual, random_numeros)
 
+def buscar_aluno_por_matricula(matricula):
+    index = 0
+    for codigo_de_estudante in codigos_de_estudante:
+        if codigo_de_estudante == matricula:
+            return index
+        index = index + 1
+    return -1
+
+
+def menu_principal(codigo_de_aluno):
+    print ("COGIGO DE ALUNO PASSADO FOI: {} ".format(codigo_de_aluno))
 
 def login():
+    print("-" * 15)
     print("LOGIN")
+    print ("-" * 15)
+    matricula = input ("INFORME SEU NÚMERO DE MATRÍCULA: ")
+    chave = buscar_aluno_por_matricula(matricula)
+    if chave == -1:
+        print ("MATRICULA NÃO ENCONTRADA")
+        return
+    
+
+    senha = input ("INFORME SUA SENHA: ")
+    if senhas[chave] != senha:
+        print ("SENHA INCORRETA")
+        return
+    
+    menu_principal(chave)
+
+
+    
 
 
 def novo_estudante(nome, cpf, ano_de_ingresso, periodo, senha):
@@ -31,7 +60,6 @@ def novo_estudante(nome, cpf, ano_de_ingresso, periodo, senha):
     periodos.append(periodo)
     senhas.append(senha)
     return chave_aluno
-
 
 
 
