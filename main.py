@@ -29,12 +29,6 @@ segundo_periodo = ["0- MATEMATICA PARA SISTEMAS DE INFORMACAO (80 hr)",
 "9- OPTATIVA HUMANÍSTICA (40 hr)"]
     
 
-def msg (txt):
-    print("-" * 30)
-    print(txt)
-    print("-" * 30)
-
-
 
 """criar codigo do estudante retorna uma string onde os quatro primeiros digitos 
    representam o ano de curso e os cinco últimos são números aleatórios indo de 0 até 99999"""
@@ -74,7 +68,9 @@ def menu_principal(codigo_de_aluno):
 
 
 def login():
-    msg("LOGIN")
+    print("-" * 15)
+    print("LOGIN")
+    print ("-" * 15)
     matricula = input ("INFORME SEU NÚMERO DE MATRÍCULA: ")
     chave = buscar_aluno_por_matricula(matricula)
 
@@ -102,11 +98,12 @@ def novo_estudante(nome, cpf, ano_de_ingresso, periodo, senha):
     nomes.append(nome)
     cpfs.append(cpf)
     anos_de_ingresso.append(ano_de_ingresso)
-    periodos.append(periodo)
+    print(primeiro_periodo)
+    print(periodo)
     if periodo == 1:
-        for x in primeiro_periodo:
-            print(x)
-          
+        for elemento_primeiro in primeiro_periodo:
+            print("rodando")
+            materias[codigo_do_aluno].append(elemento_primeiro)
     else:
         periodos.append(periodo)
     senhas.append(senha)
@@ -116,21 +113,19 @@ def novo_estudante(nome, cpf, ano_de_ingresso, periodo, senha):
 
 
 def cadastro():
-    msg("CADASTRO")
+    print("-" * 15)
+    print("CADASTRO")
+    print ("-" * 15)
     digite_seu_nome = input("DIGITE SEU NOME: ")
     digite_seu_cpf = input ("DIGITE SEU CPF: ")
     digite_seu_ano_de_ingresso = input ("DIGITE SEU ANO DE INGRESSO: ")
     digite_seu_periodo = input ("DIGITE SEU PERÍODO: ")
     digite_sua_senha = input("DIGITE SUA SENHA: ")
-    chave_aluno, codigo_de_aluno = novo_estudante(digite_seu_nome, digite_seu_cpf, digite_seu_ano_de_ingresso, digite_seu_periodo, digite_sua_senha)
-    print("*" * 40)
-    print ("CADASTRO EFETUADO COM SUCESSO! SEU NÚMERO DE MATRÍCULA É: {}".format(codigo_de_aluno))
-    print("*" * 40)
+    chave_aluno, codigo_do_aluno = novo_estudante(digite_seu_nome, digite_seu_cpf, digite_seu_ano_de_ingresso, digite_seu_periodo, digite_sua_senha)
+    print ("CADASTRO EFETUADO COM SUCESSO! SEU NÚMERO DE MATRÍCULA É: {}".format(codigo_do_aluno))
     menu_principal(chave_aluno)
 
-
 def adicionar_materia (codigo_de_aluno):
-    msg("ADICIONAR MATÉRIAS")
     periodo = int(input("DIGITE SEU PERÍODO (1 ou 2): "))
     if periodo == 1:
         print ("NÃO É POSSÍVEL ADICIONAR MATÉRIA")
@@ -147,9 +142,11 @@ def adicionar_materia (codigo_de_aluno):
             break
 
 
+        
+  
+
 
 def remover_materia(codigo_de_aluno):
-    msg("REMOVER MATÉRIAS")
     periodo = int(input("DIGITE SEU PERÍODO (1 ou 2): "))
     if periodo == 1:
         print ("NÃO É POSSÍVEL ADICIONAR MATÉRIA")
@@ -165,11 +162,12 @@ def remover_materia(codigo_de_aluno):
 
 
 def atestado_de_matricula(codigo_de_aluno):
-    msg("ATESTADO DE MATRÍCULA")
     print("NOME: {}".format(nomes[codigo_de_aluno]))
     print("PERÍODO: {}".format(periodos[codigo_de_aluno]))
     print("MATRÍCULA: {}".format(codigos_de_estudante[codigo_de_aluno]))
-    msg ("MATERIAS MATRICULADAS")
+    print ("-" * 30)
+    print("MATERIAS MATRICULADAS")
+    print ("-" * 30)
     for z in materias[codigo_de_aluno]:
         print(z)
     
