@@ -28,6 +28,10 @@ segundo_periodo = ["0- MATEMATICA PARA SISTEMAS DE INFORMACAO (80 hr)",
 "8- METODOLOGIA CIENTÍFICA (80 hr)",
 "9- OPTATIVA HUMANÍSTICA (40 hr)"]
     
+def msg (txt):
+    print("-" * 30)
+    print(txt)
+    print("-" * 30)
 
 
 """criar codigo do estudante retorna uma string onde os quatro primeiros digitos 
@@ -68,9 +72,7 @@ def menu_principal(codigo_de_aluno):
 
 
 def login():
-    print("-" * 15)
-    print("LOGIN")
-    print ("-" * 15)
+    msg("LOGIN")
     matricula = input ("INFORME SEU NÚMERO DE MATRÍCULA: ")
     chave = buscar_aluno_por_matricula(matricula)
 
@@ -113,9 +115,7 @@ def novo_estudante(nome, cpf, ano_de_ingresso, periodo, senha):
 
 
 def cadastro():
-    print("-" * 15)
-    print("CADASTRO")
-    print ("-" * 15)
+    msg ("CADASTRO")
     digite_seu_nome = input("DIGITE SEU NOME: ")
     digite_seu_cpf = input ("DIGITE SEU CPF: ")
     digite_seu_ano_de_ingresso = input ("DIGITE SEU ANO DE INGRESSO: ")
@@ -165,9 +165,7 @@ def atestado_de_matricula(codigo_de_aluno):
     print("NOME: {}".format(nomes[codigo_de_aluno]))
     print("PERÍODO: {}".format(periodos[codigo_de_aluno]))
     print("MATRÍCULA: {}".format(codigos_de_estudante[codigo_de_aluno]))
-    print ("-" * 30)
-    print("MATERIAS MATRICULADAS")
-    print ("-" * 30)
+    msg("MATERIAS MATRICULADAS")
     for z in materias[codigo_de_aluno]:
         print(z)
     
